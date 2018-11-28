@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPeliculasactoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPeliculasactoresLabel_cache}" for="cache" />
+                    <h:inputText id="cache" value="#{peliculasactoresController.selected.cache}" title="#{bundle.EditPeliculasactoresTitle_cache}" />
+                    <h:outputLabel value="#{bundle.EditPeliculasactoresLabel_nomPersonaje}" for="nomPersonaje" />
+                    <h:inputText id="nomPersonaje" value="#{peliculasactoresController.selected.nomPersonaje}" title="#{bundle.EditPeliculasactoresTitle_nomPersonaje}" required="true" requiredMessage="#{bundle.EditPeliculasactoresRequiredMessage_nomPersonaje}"/>
+                    <h:outputLabel value="#{bundle.EditPeliculasactoresLabel_foto}" for="foto" />
+                    <h:inputText id="foto" value="#{peliculasactoresController.selected.foto}" title="#{bundle.EditPeliculasactoresTitle_foto}" />
+                    <h:outputLabel value="#{bundle.EditPeliculasactoresLabel_peliculas}" for="peliculas" />
+                    <h:selectOneMenu id="peliculas" value="#{peliculasactoresController.selected.peliculas}" title="#{bundle.EditPeliculasactoresTitle_peliculas}" required="true" requiredMessage="#{bundle.EditPeliculasactoresRequiredMessage_peliculas}">
+                        <f:selectItems value="#{peliculasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPeliculasactoresLabel_actores}" for="actores" />
+                    <h:selectOneMenu id="actores" value="#{peliculasactoresController.selected.actores}" title="#{bundle.EditPeliculasactoresTitle_actores}" required="true" requiredMessage="#{bundle.EditPeliculasactoresRequiredMessage_actores}">
+                        <f:selectItems value="#{actoresController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{peliculasactoresController.update}" value="#{bundle.EditPeliculasactoresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPeliculasactoresViewLink}"/>
+                <br />
+                <h:commandLink action="#{peliculasactoresController.prepareList}" value="#{bundle.EditPeliculasactoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPeliculasactoresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditActoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditActoresLabel_codAutor}" for="codAutor" />
+                    <h:inputText id="codAutor" value="#{actoresController.selected.codAutor}" title="#{bundle.EditActoresTitle_codAutor}" required="true" requiredMessage="#{bundle.EditActoresRequiredMessage_codAutor}"/>
+                    <h:outputLabel value="#{bundle.EditActoresLabel_nomAutor}" for="nomAutor" />
+                    <h:inputText id="nomAutor" value="#{actoresController.selected.nomAutor}" title="#{bundle.EditActoresTitle_nomAutor}" required="true" requiredMessage="#{bundle.EditActoresRequiredMessage_nomAutor}"/>
+                    <h:outputLabel value="#{bundle.EditActoresLabel_lugarNacimiento}" for="lugarNacimiento" />
+                    <h:inputText id="lugarNacimiento" value="#{actoresController.selected.lugarNacimiento}" title="#{bundle.EditActoresTitle_lugarNacimiento}" />
+                </h:panelGrid>
+                <h:commandLink action="#{actoresController.update}" value="#{bundle.EditActoresSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditActoresViewLink}"/>
+                <br />
+                <h:commandLink action="#{actoresController.prepareList}" value="#{bundle.EditActoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditActoresIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

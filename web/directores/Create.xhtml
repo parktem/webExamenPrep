@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDirectoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDirectoresLabel_codDirector}" for="codDirector" />
+                    <h:inputText id="codDirector" value="#{directoresController.selected.codDirector}" title="#{bundle.CreateDirectoresTitle_codDirector}" required="true" requiredMessage="#{bundle.CreateDirectoresRequiredMessage_codDirector}"/>
+                    <h:outputLabel value="#{bundle.CreateDirectoresLabel_nomDirector}" for="nomDirector" />
+                    <h:inputText id="nomDirector" value="#{directoresController.selected.nomDirector}" title="#{bundle.CreateDirectoresTitle_nomDirector}" required="true" requiredMessage="#{bundle.CreateDirectoresRequiredMessage_nomDirector}"/>
+                    <h:outputLabel value="#{bundle.CreateDirectoresLabel_foto}" for="foto" />
+                    <h:inputText id="foto" value="#{directoresController.selected.foto}" title="#{bundle.CreateDirectoresTitle_foto}" />
+                    <h:outputLabel value="#{bundle.CreateDirectoresLabel_peliculas}" for="peliculas" />
+                    <h:selectOneMenu id="peliculas" value="#{directoresController.selected.peliculas}" title="#{bundle.CreateDirectoresTitle_peliculas}" >
+                        <f:selectItems value="#{peliculasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{directoresController.create}" value="#{bundle.CreateDirectoresSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{directoresController.prepareList}" value="#{bundle.CreateDirectoresShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDirectoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

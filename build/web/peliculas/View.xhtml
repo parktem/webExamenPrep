@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPeliculasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_codPelicula}"/>
+                    <h:outputText value="#{peliculasController.selected.codPelicula}" title="#{bundle.ViewPeliculasTitle_codPelicula}"/>
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_titulo}"/>
+                    <h:outputText value="#{peliculasController.selected.titulo}" title="#{bundle.ViewPeliculasTitle_titulo}"/>
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_ano}"/>
+                    <h:outputText value="#{peliculasController.selected.ano}" title="#{bundle.ViewPeliculasTitle_ano}"/>
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_trailer}"/>
+                    <h:outputText value="#{peliculasController.selected.trailer}" title="#{bundle.ViewPeliculasTitle_trailer}"/>
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_comentario}"/>
+                    <h:outputText value="#{peliculasController.selected.comentario}" title="#{bundle.ViewPeliculasTitle_comentario}"/>
+                    <h:outputText value="#{bundle.ViewPeliculasLabel_codDirector}"/>
+                    <h:outputText value="#{peliculasController.selected.codDirector}" title="#{bundle.ViewPeliculasTitle_codDirector}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{peliculasController.destroyAndView}" value="#{bundle.ViewPeliculasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPeliculasEditLink}"/>
+                <br />
+                <h:commandLink action="#{peliculasController.prepareCreate}" value="#{bundle.ViewPeliculasCreateLink}" />
+                <br />
+                <h:commandLink action="#{peliculasController.prepareList}" value="#{bundle.ViewPeliculasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPeliculasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

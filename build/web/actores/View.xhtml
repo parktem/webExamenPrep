@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewActoresTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewActoresLabel_codAutor}"/>
+                    <h:outputText value="#{actoresController.selected.codAutor}" title="#{bundle.ViewActoresTitle_codAutor}"/>
+                    <h:outputText value="#{bundle.ViewActoresLabel_nomAutor}"/>
+                    <h:outputText value="#{actoresController.selected.nomAutor}" title="#{bundle.ViewActoresTitle_nomAutor}"/>
+                    <h:outputText value="#{bundle.ViewActoresLabel_lugarNacimiento}"/>
+                    <h:outputText value="#{actoresController.selected.lugarNacimiento}" title="#{bundle.ViewActoresTitle_lugarNacimiento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{actoresController.destroyAndView}" value="#{bundle.ViewActoresDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewActoresEditLink}"/>
+                <br />
+                <h:commandLink action="#{actoresController.prepareCreate}" value="#{bundle.ViewActoresCreateLink}" />
+                <br />
+                <h:commandLink action="#{actoresController.prepareList}" value="#{bundle.ViewActoresShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewActoresIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
